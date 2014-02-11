@@ -21,28 +21,18 @@ handleAuthClick = (event) ->
 	gapi.auth.authorize {client_id: clientId, scope: scopes, immediate: false}, handleAuthResult
 	return false
 
+
+
+
 class Calendar
 	constructor: (@username, @password) ->
 
-	add: (message, minutes) ->
-		cal = 'cm.eriksen@gmail.com'
-		path = "https://www.googleapis.com/calendar/v3/calendars/#{cal}/events?pp=1&key=#{APIKEY}"
-
-		text = 'Brunch with Mom at Java 11am Sunday'
-		message = text
-		
-
-		$.post path,
-			'text' : message
-			(data) -> $('body').append "Successfully posted to the page."
-
-	addTwo: (message, minutes) ->
+	add: (message, minutes, onSuccess) ->
 
 		start = new Date()
 		start.setMinutes start.getMinutes() + minutes
 		end = new Date()
 		end.setMinutes end.getMinutes() + minutes
-
 
 		gapi.client.load 'calendar', 'v3', ->
 			resource = 
@@ -52,31 +42,16 @@ class Calendar
 					"dateTime" : start.toISOString()
 				"end" : 
 					"dateTime": end.toISOString()
-
+				"reminders": 
+    				"useDefault": 'false'
+    				"overrides": [
+				        "method": 'popup'
+				        "minutes": 0
+    				]
 
 			request = gapi.client.calendar.events.insert
 	  			'calendarId': 'primary'
 	  			'resource': resource
 				  
 			request.execute (resp) ->
-	  			console.log resp 
-  
-
-
-
-  
-
-#<script>
-#  function auth() {
-#    var config = {
-#     'client_id': 'YOUR CLIENT ID',
- #     'scope': 'https://www.googleapis.com/auth/urlshortener'
-#    };
-#    gapi.auth.authorize(config, function() {
-#      console.log('login complete');
-#      console.log(gapi.auth.getToken());
-#    });
-#  }
-#</script>
-
-     
+	  			onSuccess() 

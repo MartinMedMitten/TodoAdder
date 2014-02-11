@@ -4,7 +4,17 @@ $(function() {
   calendar = new Calendar('test', 'fest');
   submitButton = $('#submit');
   submitButton.click(function() {
-    return calendar.addTwo($('#todotext').val(), parseInt($('#minutes').val()));
+    return calendar.add($('#todotext').val(), parseInt($('#minutes').val()), function() {
+      var alert;
+      alert = $('.alert-success');
+      alert.show();
+      return setTimeout(function() {
+        return alert.hide();
+      }, 1000);
+    });
   });
-  return $('#todotext').focus();
+  $('#todotext').focus();
+  return $('.alert .close').click(function() {
+    return $(this).parent().hide();
+  });
 });

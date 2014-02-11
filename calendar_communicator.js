@@ -48,20 +48,7 @@ Calendar = (function() {
     this.password = password;
   }
 
-  Calendar.prototype.add = function(message, minutes) {
-    var cal, path, text;
-    cal = 'cm.eriksen@gmail.com';
-    path = "https://www.googleapis.com/calendar/v3/calendars/" + cal + "/events?pp=1&key=" + APIKEY;
-    text = 'Brunch with Mom at Java 11am Sunday';
-    message = text;
-    return $.post(path, {
-      'text': message
-    }, function(data) {
-      return $('body').append("Successfully posted to the page.");
-    });
-  };
-
-  Calendar.prototype.addTwo = function(message, minutes) {
+  Calendar.prototype.add = function(message, minutes, onSuccess) {
     var end, start;
     start = new Date();
     start.setMinutes(start.getMinutes() + minutes);
@@ -77,6 +64,15 @@ Calendar = (function() {
         },
         "end": {
           "dateTime": end.toISOString()
+        },
+        "reminders": {
+          "useDefault": 'false',
+          "overrides": [
+            {
+              "method": 'popup',
+              "minutes": 0
+            }
+          ]
         }
       };
       request = gapi.client.calendar.events.insert({
@@ -84,7 +80,7 @@ Calendar = (function() {
         'resource': resource
       });
       return request.execute(function(resp) {
-        return console.log(resp);
+        return onSuccess();
       });
     });
   };

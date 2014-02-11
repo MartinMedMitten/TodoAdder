@@ -14,13 +14,17 @@
 
 			<div class="control-group">  
 				<div class="controls">  
-					<textarea class='input-lg' id="todotext" rows="5" cols="60"></textarea>
+					<textarea class='form-control' id="todotext" rows="5" placeholder="What todo!?"></textarea>
 					<a href='#' id='authorize-button' onclick='handleAuthClick();'>Login</a>
 					<div style='margin-top:10px'>
 						<input class="input-sm" type='text' id='minutes' value="60" />
-						<input class="btn btn-lg btn-success" type='button' id='submit' value='GOGO!' />
+						<label for='minutes' class='form-control'>Minutes</label>
 					</div>
-
+					<input class="btn btn-lg btn-success" type='button' id='submit' value='GOGO!' />
+					<div class="alert alert-success fade in" style="display:none;">
+						<button type="button" class="close">×</button>
+						<strong>Success!</strong> Your message has been sent successfully.
+					</div>
 				</div>  
 			</div>  
 
@@ -28,7 +32,8 @@
 
 		</div>
 	</div>
-	<script src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script src="calendar_communicator.js"></script>
 	<script src="todoadder.js"></script>
 	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>

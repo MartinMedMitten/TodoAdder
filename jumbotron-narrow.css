@@ -11,11 +11,6 @@ body {
   padding-right: 15px;
 }
 
-input,
-textarea {
-  margion: 5px;
-}
-
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
@@ -50,6 +45,20 @@ textarea {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
+@media screen and (min-width: 768px) {
+  .jumbotron textarea{
+    max-width: 768px;
+  }
+}
+
+#minutes {
+  width: 75px;
+}
+
+.form-control{
+  display:inline;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
