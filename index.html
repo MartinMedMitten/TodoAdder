@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link href="jumbotron-narrow.css" rel="stylesheet"> 
+</head>
 <body>
+	<div class='container-narrow'>
+		<div class='jumbotron'>
+			<h1>Add todo</h1>
 
-	<section>
-		<textarea id="todotext" rows="5" cols="30"></textarea>
-		<a href='#' id='authorize-button' onclick='handleAuthClick();'>Login</a>
-		<div>
-			<input type='texbox' id='minutes' value="60" />
-			<input type='button' id='submit' value='GOGO!' />
+			<div class="control-group">  
+				<div class="controls">  
+					<textarea class='input-lg' id="todotext" rows="5" cols="60"></textarea>
+					<a href='#' id='authorize-button' onclick='handleAuthClick();'>Login</a>
+					<div style='margin-top:10px'>
+						<input class="input-sm" type='text' id='minutes' value="60" />
+						<input class="btn btn-lg btn-success" type='button' id='submit' value='GOGO!' />
+					</div>
+
+				</div>  
+			</div>  
+
+
+
 		</div>
-	</section>
-
+	</div>
 	<script src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
 	<script src="calendar_communicator.js"></script>
 	<script src="todoadder.js"></script>
