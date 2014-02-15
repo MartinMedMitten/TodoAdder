@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	<link href="jumbotron-narrow.css" rel="stylesheet"> 
+	<title>ToDoEr</title>
 </head>
 <body>
 	<div class='container-narrow'>
@@ -18,7 +19,12 @@
 					<a href='#' id='authorize-button' onclick='handleAuthClick();'>Login</a>
 					<div style='margin-top:10px'>
 						<input class="input-sm" type='text' id='minutes' value="60" />
-						<label for='minutes' class='form-control'>Minutes</label>
+						<label id="unitlabel" for='minutes' class='form-control'>Minutes</label>
+						<label id="whendaylabel" for='minutes' class='form-control'></label>
+						<label id="whentimelabel" for='minutes' class='form-control'></label>
+						<label id="whendatelabel" for='minutes' class='form-control'></label>
+						
+
 					</div>
 					<input class="btn btn-lg btn-success" type='button' id='submit' value='GOGO!' />
 					<div class="alert alert-success fade in" style="display:none;">
